@@ -1,7 +1,7 @@
-# Guess the Number
+"""Guess the Number
 
-# Game where a random number is selected at the start and the user must try to
-# guess the number correctly using the hints before the attempts run out.
+Game where a random number is selected at the start and the user must try to
+guess the number correctly using the hints before the attempts run out."""
 
 import random
 

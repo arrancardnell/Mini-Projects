@@ -55,7 +55,7 @@ while play_again != False:
             computer_score += 1
     else:
         if computer_choice == 1:
-            print("\nThe computer chooses Rock.")
+            print("\nThe computer chooses rock.")
             print("\nThe computer wins. Better luck next time!")
             computer_score += 1
         elif computer_choice == 2:

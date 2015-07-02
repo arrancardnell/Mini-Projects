@@ -75,5 +75,6 @@ while roll_again:
     answer = input("> ").lower()
 
     if answer not in ("yes", "y"):
+        print("I hate you. Goodbye.")
         roll_again = False
     
