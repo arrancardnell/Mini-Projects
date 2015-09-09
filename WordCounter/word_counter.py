@@ -18,7 +18,7 @@ class WordCounter:
         """Select a file and check it is valid."""
         
         filename = input("\nEnter the name of the text file you would like to count." \
-                     + "\nPlease include the suffice (i.e. '.txt')." + "\n> ")
+                     + "\nPlease include the suffix (i.e. '.txt')." + "\n> ")
         try:    
             with open(filename) as f:
                 words = [word.strip() for line in f for word in line.split()]  # create a list of all the words in the file
