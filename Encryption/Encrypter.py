@@ -15,7 +15,12 @@ class Encrypter(object):
     """
     An encryption / decryption program.
     """
+
     def __init__(self):
+        """
+        Setup the Caesar Cipher and the decoder.
+        """
+
         self.CaesarCipher = CaesarCipher()
         self.CaesarDecoder = CaesarDecoder()
 
@@ -60,9 +65,13 @@ class Encrypter(object):
 
                 cipher_key = -cipher_key
                 cipher_file, cipher_key = self.CaesarCipher.encryption(file, cipher_key)
+                print("Decrypting...")
+                time.sleep(1)
+                print("Decrypting...")
+                time.sleep(1)
                 print("\nUsing the key {}, your decoded message is:\n".format(-cipher_key))
                 print(cipher_file)
-            else:
+            else:  # use the Caesar Decoder module to decrypt the file
                 print("Attempting to decrypt the file...")
                 time.sleep(1)
                 print("Attempting to decrypt the file...")
