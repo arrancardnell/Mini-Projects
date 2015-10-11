@@ -6,7 +6,7 @@ simple Caesar Cipher. A file can also be decrypted if the user
 knows the secret key.
 """
 
-import random
+import random, time
 from Caesar_Cipher_Encrypt import CaesarCipher
 from Caesar_Decoder import CaesarDecoder
 
@@ -64,6 +64,9 @@ class Encrypter(object):
                 print(cipher_file)
             else:
                 print("Attempting to decrypt the file...")
+                time.sleep(1)
+                print("Attempting to decrypt the file...")
+                time.sleep(1)
                 cipher_file, cipher_key = self.CaesarDecoder.decrypter(file)
                 print("\nUsing the key {}, your decoded message is:\n".format(-cipher_key))
                 print(cipher_file)
