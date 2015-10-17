@@ -2,39 +2,43 @@ __author__ = 'Arran'
 
 import csv
 
-MY_FILE = "C:\\Users\\Arran\\Documents\\GitHub\\My-Projects\\Data_Visualisation\\sample_sfpd_incident_all.csv"
 
+class Parse:
 
-def parse(raw_file, delimiter):
-    """Parses a raw CSV file to a JSON-like object."""
+    def __init__(self):
+        self.MY_FILE = "C:\\Users\\Arran\\Documents\\GitHub\\My-Projects\\Data_Visualisation\\sample_sfpd_incident_all.csv"
 
-    # Open CSV file
-    opened_file = open(raw_file, newline='\n')
+    def parse(self, raw_file, delimiter):
+        """Parses a raw CSV file to a JSON-like object."""
 
-    # Read CSV file
-    csv_data = csv.reader(opened_file, delimiter=delimiter)
+        # Open CSV file
+        opened_file = open(raw_file, newline='\n')
 
-    # Setup an empty list
-    parsed_data = []
+        # Read CSV file
+        csv_data = csv.reader(opened_file, delimiter=delimiter)
 
-    # Skip over the first line of the file for the headers
-    fields = next(csv_data)
+        # Setup an empty list
+        parsed_data = []
 
-    # Iterate over each row of the csv file, zip together field -> value
-    for row in csv_data:
-        parsed_data.append(dict(zip(fields, row)))
+        # Skip over the first line of the file for the headers
+        fields = next(csv_data)
 
-    # Close the CSV file
-    opened_file.close()
+        # Iterate over each row of the csv file, zip together field -> value
+        for row in csv_data:
+            parsed_data.append(dict(zip(fields, row)))
 
-    return parsed_data
+        # Close the CSV file
+        opened_file.close()
 
+        return parsed_data
 
-def main():
-    # Call our parse function and give it the needed parameters
-    new_data = parse(MY_FILE, ",")
+    def main(self):
+        
+        # Call our parse function and give it the needed parameters
+        new_data = self.parse(self.MY_FILE, ",")
 
-    print(new_data)
+        print(new_data)
 
 if __name__ == "__main__":
-    main()
+    parse = Parse()
+    parse.main()
