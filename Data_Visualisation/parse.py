@@ -33,12 +33,8 @@ class Parse:
         return parsed_data
 
     def main(self):
-        
+
         # Call our parse function and give it the needed parameters
         new_data = self.parse(self.MY_FILE, ",")
 
-        print(new_data)
-
-if __name__ == "__main__":
-    parse = Parse()
-    parse.main()
+        return new_data
