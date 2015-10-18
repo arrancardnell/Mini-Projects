@@ -6,7 +6,7 @@ import csv
 class Parse:
 
     def __init__(self):
-        self.MY_FILE = "C:\\Users\\Arran\\Documents\\GitHub\\My-Projects\\Data_Visualisation\\sample_sfpd_incident_all.csv"
+        self.MY_FILE = "C:\\Users\\Arran\\Documents\\GitHub\\My-Projects\\DataVisualisation\\sample_sfpd_incident_all.csv"
 
     def parse(self, raw_file, delimiter):
         """Parses a raw CSV file to a JSON-like object."""

@@ -3,65 +3,68 @@ __author__ = 'Arran'
 import geojson
 from parse import Parse
 
-def create_map(data_file):
-    """Creates a GeoJSON file.
+class Map:
 
-    Returns a GeoJSON file that can be rendered in a GitHub
-    Gist at gist.github.com.  Just copy the output file and
-    paste into a new Gist, then create either a public or
-    private gist.  GitHub will automatically render the GeoJSON
-    file as a map.
-    """
+    def create_map(self, data_file):
+        """Creates a GeoJSON file.
 
-    # Define type of GeoJSON we're creating
-    geo_map = {"type": "FeatureCollection"}
+        Returns a GeoJSON file that can be rendered in a GitHub
+        Gist at gist.github.com.  Just copy the output file and
+        paste into a new Gist, then create either a public or
+        private gist.  GitHub will automatically render the GeoJSON
+        file as a map.
+        """
 
-    # Define empty list to collect each point to graph
-    item_list = []
+        # Define type of GeoJSON we're creating
+        geo_map = {"type": "FeatureCollection"}
 
-    # Iterate over our data to create GeoJSON document.
-    # We're using enumerate() so we get the line, as well
-    # the index, which is the line number.
-    for index, line in enumerate(data_file):
+        # Define empty list to collect each point to graph
+        item_list = []
 
-        # Skip any zero coordinates as this will throw off
-        # our map.
-        if line['X'] == "0" or line['Y'] == "0":
-            continue
+        # Iterate over our data to create GeoJSON document.
+        # We're using enumerate() so we get the line, as well
+        # the index, which is the line number.
+        for index, line in enumerate(data_file):
 
-        # Setup a new dictionary for each iteration
-        data = {}
+            # Skip any zero coordinates as this will throw off
+            # our map.
+            if line['X'] == "0" or line['Y'] == "0":
+                continue
 
-        # Assign line items to appropriate GeoJSON fields
-        data['type'] = 'Feature'
-        data['id'] = index
-        data['properties'] = {'title': line['Category'],
-                              'description': line['Descript'],
-                              'date': line['Date']}
-        data['geometry'] = {'type': 'Point',
-                            'coordinates': (line['X'], line['Y'])}
+            # Setup a new dictionary for each iteration
+            data = {}
 
-        # Add data dictionary to our item_list
-        item_list.append(data)
+            # Assign line items to appropriate GeoJSON fields
+            data['type'] = 'Feature'
+            data['id'] = index
+            data['properties'] = {'title': line['Category'],
+                                  'description': line['Descript'],
+                                  'date': line['Date']}
+            data['geometry'] = {'type': 'Point',
+                                'coordinates': (line['X'], line['Y'])}
 
-        # For each point in our item_list, we add the point to our
-        # dictionary.  setdefault creates a key called 'features' that
-        # has a value type of an empty list.  With each iteration, we
-        # are appending our point to that list.
+            # Add data dictionary to our item_list
+            item_list.append(data)
 
-        for point in item_list:
-            geo_map.setdefault('features', []).append(point)
+            # For each point in our item_list, we add the point to our
+            # dictionary.  setdefault creates a key called 'features' that
+            # has a value type of an empty list.  With each iteration, we
+            # are appending our point to that list.
 
-        # Now that all data is parsed in GeoJSON write to a file so we
-        # can upload it to gist.github.com
-        with open('file_sf.geojson', 'w') as f:
-            f.write(geojson.dumps(geo_map))
+            for point in item_list:
+                geo_map.setdefault('features', []).append(point)
 
-def main():
-    main_parse = Parse()
-    data = main_parse.main()
+            # Now that all data is parsed in GeoJSON write to a file so we
+            # can upload it to gist.github.com
+            with open('file_sf.geojson', 'w') as f:
+                f.write(geojson.dumps(geo_map))
 
-    return create_map(data)
+    def main(self):
+        main_parse = Parse()
+        data = main_parse.main()
+
+        return self.create_map(data)
 
 if __name__ == "__main__":
-    main()
+    main_map = Map()
+    main_map.main()
